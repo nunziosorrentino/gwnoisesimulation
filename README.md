@@ -1,7 +1,7 @@
 # Welcome to Nunziato Sorrentino Simulation PhD Project!
 
 This is the part of my PhD Thesis voted to obtain simulated gravitational waves timeseries with close encounters signals injected. 
-This work is a contribution to the a fast simulator specifically designed for gravitational wave physics, calles GWSkySim, 
+This work is a contribution to the a fast simulator specifically designed for gravitational wave physics, called GWSkySim, 
 done with the Prof. Massimiliano Razzano group at University of Pisa.
 This features various kinds of gravitational wave sources and different response functions relative to the main
 gravitational wave detectors, that can be used to carry on various projects that require detailed simulations
