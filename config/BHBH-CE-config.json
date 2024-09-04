@@ -1,0 +1,62 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of close encounters.",
+  "output_dir": null,
+  "random_seed": 9,
+  "population_name": "BHBH-CE",
+  "source_type": "GWBinarySource",
+  "sources_per_file": 1000,
+  "n_files": 1,
+  "parameters": {
+    "m1": {
+      "distribution": "uniform",
+      "min": 10.0,
+      "max": 90.0
+    },
+    "m2": {
+      "distribution": "uniform",
+      "min": 10.0,
+      "max": 90.0
+    },
+    "e0": {
+      "distribution": "uniform",
+      "min": 0.85,
+      "max": 0.95
+    },
+    "p_0": {
+      "distribution": "uniform",
+      "min": 25.0,
+      "max": 50.0
+    },
+    "tp": {
+      "distribution": "delta1",
+      "min": 1242103936,
+      "max": 1242104936
+    },
+    "polarization": {
+      "distribution": "uniform",
+      "min": 0.0,
+      "max": 180.0
+    },
+    "inclination": {
+      "distribution": "cos",
+      "min": 0.0,
+      "max": 180.0
+    },
+    "distance": {
+      "distribution": "power3",
+      "min": 5e8,
+      "max": 2e9
+    },
+    "ra": {
+      "distribution": "uniform",
+      "min": 0.0,
+      "max": 360.0
+    },
+    "dec": {
+      "distribution": "sin",
+      "min": -90.0,
+      "max": 90.0
+    }
+  }
+}
+

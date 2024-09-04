@@ -1,0 +1,8 @@
+{
+  "description": "Configuration file for downloading gwosc open data",
+  "observation_run": "O2_4KHZ_R1",
+  "detectors": ["H1", "L1", "V1"],
+  "GPS_start_time": "1185615872",
+  "GPS_end_time": "1185656832",
+  "min_duty_cycle": 50.0
+}

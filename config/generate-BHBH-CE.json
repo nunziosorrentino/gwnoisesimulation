@@ -1,0 +1,64 @@
+{
+  "description": "Distribution and ranges of parameters of a huge Population of BHBH close encounters.",
+  "output_dir": null,
+  "random_seed": 11,
+  "population_name": "BHBH-CE",
+  "source_type": "GWBinarySource",
+  "sources_per_file": 4096,
+  "n_files": 1,
+  "parameters": {
+    "m1": {
+      "distribution": "uniform",
+      "min": 10.0,
+      "max": 95.0
+    },
+    "m2": {
+      "distribution": "uniform",
+      "min": 10.0,
+      "max": 95.0
+    },
+    "e0": {
+      "distribution": "uniform",
+      "min": 0.85,
+      "max": 0.95
+    },
+    "p_0": {
+      "distribution": "uniform",
+      "min": 13.0,
+      "max": 25.0
+    },
+    "tp": {
+      "distribution": "delta1",
+      "min": 1241833600,
+      "max": 1241837696
+    },
+    "polarization": {
+      "distribution": "uniform",
+      "min": 0.0,
+      "max": 180.0
+    },
+    "inclination": {
+      "distribution": "cos",
+      "min": 0.0,
+      "max": 180.0
+    },
+    "distance": {
+      "distribution": "power3",
+      "min": 5e8,
+      "max": 2e9
+    },
+    "ra": {
+      "distribution": "uniform",
+      "min": 0.0,
+      "max": 360.0
+    },
+    "dec": {
+      "distribution": "sin",
+      "min": -90.0,
+      "max": 90.0
+    }
+  }
+}
+
+
+

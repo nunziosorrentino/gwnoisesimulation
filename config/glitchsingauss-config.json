@@ -1,0 +1,32 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of sin gauss glitch",
+  "output_dir": null,
+  "random_seed": 42,
+  "population_name": "singauss",
+  "source_type": "GWGlitchSinGauss",
+  "sources_per_file": 10,
+  "n_files": 1,
+  "detector": "V1",
+  "parameters": {
+    "t0": {
+      "distribution": "delta1",
+      "min": 5,
+      "max": 105
+    },
+    "tau": {
+      "distribution": "uniform",
+      "min": 0.0003,
+      "max":0.09
+    },
+    "f0": {
+      "distribution": "growing_random",
+      "min": 50,
+      "max":1500
+    },
+    "SNR": {
+      "distribution": "uniform",
+      "min": 4,
+      "max": 50
+    }
+  }
+}

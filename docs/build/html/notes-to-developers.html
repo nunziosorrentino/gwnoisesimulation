@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Notes &mdash; gwskysim 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Getting Started" href="getstarted.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> gwskysim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-add-a-new-source-type">How to add a new source type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-your-source-file">Create your source file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-mandatory-method">Add mandatory method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#test-source-generation">Test source generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generate-gw-population">Generate GW population</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gwglitch">GWGlitch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gwcolorednoise">GWColoredNoise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gwwhitenoise">GWWhiteNoise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html">Downloading data from GWOSC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html#select-noise-according-to-quality">Select noise according to quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="popsim.html">Simulating a population of BBH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sourcesim.html">Source Simulation (BBH)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Source Simulation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gwskysim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Notes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/notes-to-developers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="notes">
+<h1>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h1>
+<p>Notes voted to developers who want to create a particular source type,
+with releted templates, in gwskysim simulator.</p>
+<div class="section" id="how-to-add-a-new-source-type">
+<h2>How to add a new source type<a class="headerlink" href="#how-to-add-a-new-source-type" title="Permalink to this headline">¶</a></h2>
+<p>Follow these instructions step by step.</p>
+<div class="section" id="create-your-source-file">
+<h3>Create your source file<a class="headerlink" href="#create-your-source-file" title="Permalink to this headline">¶</a></h3>
+<p>Suppose you want to add a GW source named <strong>Vulcano</strong>. First of all create
+this python file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">gwskysim/sources/gwvulcano.py</span>
+</pre></div>
+</div>
+<p>Then create a class inside it with the following attributes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="k">class</span> <span class="nc">GWVulcano</span><span class="p">(</span><span class="n">GWPointSource</span><span class="p">):</span>
+</span><span class="hll">
+</span><span class="hll">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">inclination</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">rtime</span><span class="p">):</span>
+</span><span class="hll">
+</span><span class="hll">        <span class="n">GWPointSource</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="p">,</span> <span class="n">polarization</span><span class="p">,</span> <span class="n">inclination</span><span class="p">)</span>
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">distance</span> <span class="o">=</span> <span class="n">distance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">mass</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtime</span> <span class="o">=</span> <span class="n">rtime</span>
+</pre></div>
+</div>
+<p>Where <em>name</em>, <em>ra</em>, <em>dec</em>, <em>polarization</em> and <em>inclination</em> are mandatory
+arguments for all point-like source. <em>Distance</em>, <em>mass</em> and <em>rtime</em> are
+proper parameters of the example source <strong>Vulcano</strong>, thus these are the
+parameters that uniquely classify your GW source.</p>
+</div>
+<div class="section" id="add-mandatory-method">
+<h3>Add mandatory method<a class="headerlink" href="#add-mandatory-method" title="Permalink to this headline">¶</a></h3>
+<p>Here comes the most important thing to do, <strong>the source template script</strong>.
+This must be contained in a <em>__call__</em> method of <em>GWVulcano</em> class and
+must return two numpy arrays containing the plus and the cross polarizations
+of the source, given a feneray numpy array <em>times_array</em>!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">times_array</span><span class="p">):</span>
+</span><span class="hll">    <span class="sd">&quot;&quot;&quot;This is a __call__ that must return two numpy arrays</span>
+</span><span class="hll"><span class="sd">       containing the template (plus and cross polarization values</span>
+</span><span class="hll"><span class="sd">       at each time) of the source.</span>
+</span><span class="hll"><span class="sd">    &quot;&quot;&quot;</span>
+</span><span class="hll">    <span class="c1"># Write here your code, importing the template, and return</span>
+</span><span class="hll">    <span class="c1"># it with h_p and h_c arrays</span>
+</span>    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="o">.</span>
+    <span class="k">return</span> <span class="n">h_p</span><span class="p">,</span> <span class="n">h_c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="test-source-generation">
+<h2>Test source generation<a class="headerlink" href="#test-source-generation" title="Permalink to this headline">¶</a></h2>
+<p>Now try to simulate your source, giving it plausible source parameters,
+and use <em>generate_signal</em> method available for all <strong>GWPointSource</strong> sub-classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">from</span> <span class="nn">gwskysim.sources.gwvulcano</span> <span class="kn">import</span> <span class="n">GWVulcano</span>
+
+<span class="n">ra</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># in deg</span>
+<span class="n">dec</span> <span class="o">=</span> <span class="o">-</span><span class="mi">125</span> <span class="c1"># in deg</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="mf">1.14</span> <span class="c1"># in Mpc</span>
+<span class="n">pol</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># in deg</span>
+<span class="n">incl</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># in deg</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="mf">1.4</span> <span class="c1"># in solas masses</span>
+<span class="n">rtime</span> <span class="o">=</span> <span class="mf">0.</span> <span class="c1"># reference timme in seconds</span>
+
+<span class="c1"># Setup Vulcano source</span>
+<span class="hll"><span class="n">v_source</span> <span class="o">=</span> <span class="n">GWVulcano</span><span class="p">(</span><span class="s1">&#39;SpockPlanet&#39;</span><span class="p">,</span> <span class="n">ra</span><span class="o">=</span><span class="n">ra</span><span class="p">,</span> <span class="n">dec</span><span class="o">=</span><span class="n">dec</span><span class="p">,</span> <span class="n">polarization</span><span class="o">=</span><span class="n">pol</span><span class="p">,</span>
+</span><span class="hll">                     <span class="n">inclination</span><span class="o">=</span><span class="n">incl</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="n">dist</span><span class="p">,</span> <span class="n">mass</span><span class="o">=</span><span class="n">mass</span><span class="p">,</span> <span class="n">rtime</span><span class="o">=</span><span class="n">rtime</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll"><span class="c1"># Configuration parameters used for the simulation</span>
+</span><span class="hll"><span class="n">t0</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># start GPS time in s</span>
+</span><span class="hll"><span class="n">duration</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># duration of the observation in s</span>
+</span><span class="hll"><span class="n">fs</span> <span class="o">=</span> <span class="mi">8000</span> <span class="c1"># sampling frequency in Hz</span>
+</span><span class="hll"><span class="n">det</span> <span class="o">=</span> <span class="s1">&#39;V1&#39;</span> <span class="c1"># project on Virgo interferometer</span>
+</span><span class="hll">
+</span><span class="hll"><span class="c1"># Make signal generation</span>
+</span><span class="hll"><span class="n">h_v</span> <span class="o">=</span> <span class="n">v_source</span><span class="o">.</span><span class="n">generate_signal</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">detectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">det</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</span>
+<span class="c1"># Plot and check it out</span>
+<span class="n">h_v</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you want to look at a real example, run <em>Example.py</em> located in gwskysim
+package.</p>
+</div>
+<div class="section" id="generate-gw-population">
+<h2>Generate GW population<a class="headerlink" href="#generate-gw-population" title="Permalink to this headline">¶</a></h2>
+<p>This is an example that shows the script you have to write in order to
+simulate GW strain data, given a list of HDF5 files containing sources
+and relative parameters. The data can be saved in HDF5 file, in the
+commin format used in GW data analysis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">from</span> <span class="nn">gwskysim.sources.gwpopulation</span> <span class="kn">import</span> <span class="n">GWPopulation</span>
+
+<span class="n">src_pop</span> <span class="o">=</span> <span class="n">GWPopulation</span><span class="p">(</span><span class="s1">&#39;path/to/the/1st/pars/file.hdf5&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;path/to/the/2nd/pars/file.hdf5&#39;</span><span class="p">)</span>
+<span class="c1"># 10 second of signal (time ref is 0) sampled at 4000 Hz</span>
+<span class="hll"><span class="n">v_sign</span> <span class="o">=</span> <span class="n">src_pop</span><span class="o">.</span><span class="n">generate_waveforms</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="n">detectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;V1&#39;</span><span class="p">],</span>
+</span><span class="hll">         <span class="n">approximant</span><span class="o">=</span><span class="s1">&#39;SEOBNRv4&#39;</span><span class="p">,</span> <span class="n">lower_freq</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</span>
+<span class="n">v_sign</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="c1"># Save in hdf5</span>
+<span class="n">v_sign</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save_to_hdf</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The default file prefix is <em>output_gwskysim</em>. The simulated data are saved
+in the same directory where the script is executed with the following format:</p>
+<p><em>{prefix}_{detector_code}_{start_time}-{end_time}GPS.hdf5</em>.</p>
+<div class="section" id="gwglitch">
+<h3>GWGlitch<a class="headerlink" href="#gwglitch" title="Permalink to this headline">¶</a></h3>
+<p>There are different type of glitches, based on <a class="reference external" href="https://arxiv.org/abs/1803.09933">https://arxiv.org/abs/1803.09933</a>. All these families are characterized by
+some common quantities :</p>
+<ul class="simple">
+<li><p><strong>name</strong></p></li>
+<li><p><strong>t0</strong>: the instant at which a glitch occurs;</p></li>
+<li><p><strong>tau</strong>: a characteristic time-scale for each glitch;</p></li>
+<li><p><strong>SNR</strong>: the desired signal to noise ratio of each glitch, given all the others parameters and a psd noise curve of a detector (for now only virgo is avaiable);</p></li>
+</ul>
+<p>Essentialy the SNR value is used to rescale the amplitude of each glitch
+(given all the others characterizing parameters).All types available are listed below,with a description of their characterizing parameters (in addition to the previous):</p>
+<ul class="simple">
+<li><p><strong>gauss</strong> : no others parameters</p></li>
+<li><p><strong>line</strong>: described as a lorentzian curves, no others parameters</p></li>
+<li><p><strong>sine-gauss</strong> : sinusoid of frequency f0 , modulated by a gaussian</p></li>
+<li><p><strong>scatered-light-like</strong>: frequency f0</p></li>
+<li><p><strong>whistle-like</strong>:frequency f0</p></li>
+<li><p><strong>chirp-like</strong>: chirp-like waveform characteristic of the inspiral of a compact binary of mass m1 and m2. Here t0 is the time to coalescence</p></li>
+<li><p><strong>ringdown-like</strong>: ringdown-like waveform monocromatic at f0 frequency, starting at t0.</p></li>
+</ul>
+</div>
+<div class="section" id="gwcolorednoise">
+<h3>GWColoredNoise<a class="headerlink" href="#gwcolorednoise" title="Permalink to this headline">¶</a></h3>
+<p>Class that generates a time series of colored noise following a given PSD (for now only Virgo).
+It is based on the assumption (according to the sampling theorem) that the temporal lenght T of this time series is T=n * (1/ f), where:</p>
+<ul class="simple">
+<li><p><strong>n</strong> : number of sample of the time series (which is also equals to the number of sampling points of the given PSD)</p></li>
+<li><p><strong>f</strong> : Nyquist frequency, equals to 2*fmax, where fmax is the maximum frequency of the given PSD</p></li>
+</ul>
+<p>The parameters are :</p>
+</div>
+<div class="section" id="gwwhitenoise">
+<h3>GWWhiteNoise<a class="headerlink" href="#gwwhitenoise" title="Permalink to this headline">¶</a></h3>
+<p>Class that generate a time series of white gaussian noise given a certain times_array</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="overview.html" class="btn btn-neutral float-right" title="Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="getstarted.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Massimiliano Razzano (massimiliano.razzano@unipi.it)
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

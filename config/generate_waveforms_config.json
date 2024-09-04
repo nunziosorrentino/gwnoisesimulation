@@ -1,0 +1,11 @@
+{
+  "description": "Configuration file for running the script generate_waveforms.py",
+  "data_directory": "sources_parameters",
+  "output_directory_name": "waveforms",
+  "parallel_processes": 2,
+  "approximant": "SEOBNRv4",
+  "sample_freq": 4096,
+  "lower_freq": 16,
+  "detectors": ["H1", "L1", "V1"],
+  "reference_GPS_time": 1238112018.0
+}

@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Simulating a population of BBH &mdash; gwskysim 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Source Simulation (BBH)" href="sourcesim.html" />
+    <link rel="prev" title="Downloading data from GWOSC" href="raw_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> gwskysim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notes-to-developers.html">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html">Downloading data from GWOSC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html#select-noise-according-to-quality">Select noise according to quality</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Simulating a population of BBH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sourcesim.html">Source Simulation (BBH)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Source Simulation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gwskysim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Simulating a population of BBH</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/popsim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="simulating-a-population-of-bbh">
+<h1>Simulating a population of BBH<a class="headerlink" href="#simulating-a-population-of-bbh" title="Permalink to this headline">¶</a></h1>
+<p>Once you have set up the Python environment you can start generating your own
+synthetic gravitational-wave signals!
+(at the moment only populations of binary black holes (BBH) are available)</p>
+<p>To create a population of BBH, enter the <code class="docutils literal notranslate"><span class="pre">/some/path/gwskysim/config</span></code> directory and
+open the “bbh-pop-config1.json” file. This is a JSON configuration file that includes
+options for the range of all population parameters that you can adjust according
+to your needs:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> and <code class="docutils literal notranslate"><span class="pre">population_name</span></code></dt><dd><p>“population_name” is the name you wish to give to your population.
+“output_dir” is the name of the <strong>population directory</strong>. If you write “null”
+(without the quotation marks) a directory with the standard name
+“GWsim_population_name_yyyymmdd” will be created.
+The output files will be created in a sub-directory of the population directory
+called “sources parameters”.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have already created a population and you want to increase the number
+of sources of the population (without creating a new one) you can simply write
+the name of the existing population directory as “output dir” parameter and
+follow the normal steps (specified below). This will also generate waveforms for
+the new sources only when running the source simulation.</p>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">random_seed</span></code></dt><dd><blockquote>
+<div><p>The seed for the random number generator which is needed for a matter of
+reproducibility.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be careful, and change the seed when generating <strong>*different*</strong> populations!</p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">source_type</span></code></dt><dd><p>At the moment only “BBH” is available, sorry =(</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sources_per_file</span></code> and <code class="docutils literal notranslate"><span class="pre">n_files</span></code></dt><dd><p>The output will be organized in a certain number of files (parameter “n_files”) and
+each file will have a “sources_per_file” number of sources. This organization is
+essential in order to avoid memory issues when using the data for machine learning
+purposes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">parameters</span></code></dt><dd><p>Distribution and Range (min and max value) for each parameter. Default distribution
+is “uniform” for all parameters except “inclination” which is cosine-distributed
+(“cos”) and declination which is sin-distributed (“sin”).</p>
+</dd>
+</dl>
+<p>Once you’ve adjusted the JSON configuration file, return to your work directory
+<code class="docutils literal notranslate"><span class="pre">/some/path/</span></code> (the directory in which gwskysim is contained) and run the following
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate_sources_parameters.py ./gwskysim/config/bbh-pop-config1.json
+</pre></div>
+</div>
+<p>At the end of the script you will see the message:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Sources parameters files have been successfully created</span>
+</pre></div>
+</div>
+<p>This script creates the population directory (what we called “output_dir”). The output
+<cite>*.hdf5</cite> files will be contained in a sub-directory of the population directory called
+“sources_parameters”.
+Each file (“n_files” in total) contains a table with a certain number of sources
+(“n_sources_per_file”) randomly sampled from the parameter space.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sourcesim.html" class="btn btn-neutral float-right" title="Source Simulation (BBH)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="raw_data.html" class="btn btn-neutral float-left" title="Downloading data from GWOSC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Massimiliano Razzano (massimiliano.razzano@unipi.it)
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

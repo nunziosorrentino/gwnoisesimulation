@@ -1,0 +1,35 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of chirp-like glitch",
+  "output_dir": null,
+  "random_seed": 42,
+  "population_name": "chirp-like",
+  "source_type": "GWGlitchChirpLike",
+  "sources_per_file": 50,
+  "n_files": 1,
+  "parameters": {
+    "t0": {
+      "distribution": "delta1",
+      "min": 1,
+      "max": 500
+    },
+    "m1": {
+      "distribution": "uniform",
+      "min": 2,
+      "max":30
+    },
+    "m2": {
+      "distribution": "uniform",
+      "min": 2,
+      "max": 30
+    },
+    "SNR": {
+      "distribution": "uniform",
+      "min": 8,
+      "max": 40
+    }
+  }
+}
+
+
+
+

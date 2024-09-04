@@ -1,0 +1,12 @@
+tables>=3.6.0
+astropy>=3.2.1
+h5py>=2.10.0
+pandas>=0.25.1
+lalsuite>=6.76
+pycbc>=1.15.2
+gwdama>=0.5.3
+numpy>=1.19.0
+scipy>=1.3.3
+setuptools>=41.0.0
+sphinx>=1.8.5
+sphinx_rtd_theme>=0.4.3

@@ -1,0 +1,33 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of gauss glitch",
+  "output_dir": null,
+  "random_seed": 42,
+  "population_name": "scatteredlight",
+  "source_type": "GWGlitchScatteredLight",
+  "sources_per_file": 1000,
+  "n_files": 1,
+  "parameters": {
+    "t0": {
+      "distribution": "delta1",
+      "min": 4,
+      "max": 10004
+    },
+    "tau": {
+      "distribution": "uniform",
+      "min": 0.2,
+      "max":0.5
+    },
+    "f0": {
+      "distribution": "growing_random",
+      "min": 32,
+      "max": 64
+    },
+    "SNR": {
+      "distribution": "uniform",
+      "min": 4,
+      "max": 50
+    }
+  }
+}
+
+

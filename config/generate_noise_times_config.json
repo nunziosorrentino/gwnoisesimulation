@@ -1,0 +1,11 @@
+{
+  "description": "Parameters for generating a list of good noise times",
+  "noise_directory": "raw_data_O2_4KHZ_R1_1185615872-1185656832",
+  "detectors": ["H1", "L1", "V1"],
+  "output_directory_name": "raw_data_O2_4KHZ_R1_1185615872-1185656832",
+  "output_filename": "good_noise_GPS_times.hdf5",
+  "random_seed": 42,
+  "len_noise_seconds": 128,
+  "data_quality_bits": [0, 1, 2, 3, 4, 5, 6],
+  "injection_bits": [0, 1, 2, 4]
+}

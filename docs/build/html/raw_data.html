@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Downloading data from GWOSC &mdash; gwskysim 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Simulating a population of BBH" href="popsim.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> gwskysim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notes-to-developers.html">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Downloading data from GWOSC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#select-noise-according-to-quality">Select noise according to quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="popsim.html">Simulating a population of BBH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sourcesim.html">Source Simulation (BBH)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Source Simulation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gwskysim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Downloading data from GWOSC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/raw_data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="downloading-data-from-gwosc">
+<h1>Downloading data from GWOSC<a class="headerlink" href="#downloading-data-from-gwosc" title="Permalink to this headline">¶</a></h1>
+<p>In order to download real data from the GWOSC, enter the <code class="docutils literal notranslate"><span class="pre">/some/path/gwskysim/config</span></code>
+directory and open the “download_raw_data_config.json” file. This is a JSON configuration
+file which contains the following keys:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">observation_run</span></code></dt><dd><p>The observation run of which you want to download the data (and the sampling rate).
+Default is “O2_4KHZ_R1” which corresponds to O2 sampled at 4192 Hz. Check
+<code class="docutils literal notranslate"><span class="pre">www.gw-openscience.org</span></code> for other possibilities.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">detectors</span></code></dt><dd><p>The detectors whose data you want to download. Default is “[H1,L1,V1]”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">GPS_start_time</span></code> and <code class="docutils literal notranslate"><span class="pre">GPS_end_time</span></code></dt><dd><p>The GPS time interval in which you want to download the data.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">min_duty_cycle</span></code></dt><dd><p>Only files with (at least) this duty cycle will be downloaded. Must be a number
+in range [0,100]. Default is 50.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only data where ALL the specified detectors were working with the minimum duty cycle
+will be downloaded.</p>
+</div>
+<p>Once you’ve adjusted the JSON configuration file, return to your work directory
+<code class="docutils literal notranslate"><span class="pre">/some/path/</span></code> (the directory in which gwskysim is contained) and run the following
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>download_raw_data.py ./gwskysim/config/download_raw_data_config.json
+</pre></div>
+</div>
+<p>Data will be downloaded and stored in a directory called with the standardized name
+“raw_data_observationrun_starttime_endtime”. Data will be divided in sub-directories,
+one for each detector.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GWOSC data can take up a lot of memory (several GB). Use debug mode (-d) if you
+want to check the list of files that will be downloaded before actually download them.</p>
+</div>
+</div>
+<div class="section" id="select-noise-according-to-quality">
+<h1>Select noise according to quality<a class="headerlink" href="#select-noise-according-to-quality" title="Permalink to this headline">¶</a></h1>
+<p>Once you have downloaded the data you can do a quality check to create a list of “good”
+noise GPS times that will allow you to quickly download the detectors noise (e.g. through
+a python generator). In order to do that, enter the <code class="docutils literal notranslate"><span class="pre">/some/path/gwskysim/config</span></code>
+directory and open the “generate_noise_times_config.json” file.
+This is a JSON configuration file which contains the following keys:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">noise_directory</span></code></dt><dd><p>The directory that contains the data downloaded from the GWOSC (see above), should be
+of the form “raw_data_observationrun_starttime_endtime”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">detectors</span></code></dt><dd><p>The detectors for which you want to check the quality. Default is “[H1,L1,V1]”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">output_directory_name</span></code></dt><dd><p>The directory in which you want to create the <cite>*.hdf5</cite> output file. You can use the
+“noise_directory”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">len_noise_seconds</span></code></dt><dd><p>Must be an integer. Noise segments with the chosen quality requirements must have
+at least this length in seconds. Default is 128. Segments of shorter length are
+discarded.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">data_quality_bits</span></code></dt><dd><p>The Data Quality Bits. You can find specific information on GWOSC website.
+The more bits you select, the better your data quality will be. Default is
+“data_quality_bits”: [0, 1, 2, 3, 4, 5, 6] (best possible quality)</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">injection_bits</span></code></dt><dd><p>The Injection Bits. You can find specific information on GWOSC website.
+Default is “injection_bits”: [0, 1, 2, 4]. This means that the only type
+of hardware injection allowed is continuous wave injections.</p>
+</dd>
+</dl>
+<p>Once you’ve adjusted the JSON configuration file, return to your work directory
+<code class="docutils literal notranslate"><span class="pre">/some/path/</span></code> (the directory in which gwskysim is contained) and run the following
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate_noise_times.py ./gwskysim/config/generate_noise_times_config.json
+</pre></div>
+</div>
+<p>This will create an <cite>*.hdf5</cite> file with a list of integer GPS times.
+Suppose that a GPS time T is in the list. This means that in the time interval
+[T,T+”len_noise_seconds”] the data have the specified quality requirements
+in ALL detectors indicated in the configuration file.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="popsim.html" class="btn btn-neutral float-right" title="Simulating a population of BBH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Massimiliano Razzano (massimiliano.razzano@unipi.it)
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

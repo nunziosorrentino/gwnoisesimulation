@@ -1,0 +1,34 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of gauss glitch",
+  "output_dir": null,
+  "random_seed": 42,
+  "population_name": "whistlelike",
+  "source_type": "GWGlitchWhistleLike",
+  "sources_per_file": 1000,
+  "n_files": 1,
+  "parameters": {
+    "t0": {
+      "distribution": "delta1",
+      "min": 4,
+      "max": 1004
+    },
+    "tau": {
+      "distribution": "uniform",
+      "min": 0.1,
+      "max":0.3
+    },
+    "f0": {
+      "distribution": "growing_random",
+      "min": 500,
+      "max": 3200
+    },
+    "SNR": {
+      "distribution": "uniform",
+      "min": 4,
+      "max": 50
+    }
+  }
+}
+
+
+

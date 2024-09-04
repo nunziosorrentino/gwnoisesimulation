@@ -1,0 +1,26 @@
+{
+  "description": "Distribution and ranges of parameters of a Population of gauss glitch",
+  "output_dir": null,
+  "random_seed": 42,
+  "population_name": "gauss",
+  "source_type": "GWGlitchGauss",
+  "sources_per_file": 100,
+  "n_files": 1,
+  "parameters": {
+    "t0": {
+      "distribution": "delta1",
+      "min": 4,
+      "max": 1004
+    },
+    "tau": {
+      "distribution": "uniform",
+      "min": 0.0004,
+      "max":0.004
+    },
+    "SNR": {
+      "distribution": "uniform",
+      "min": 4,
+      "max": 50
+    }
+  }
+}

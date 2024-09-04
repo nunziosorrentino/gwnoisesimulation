@@ -1,0 +1,169 @@
+Notes
+*****
+Notes voted to developers who want to create a particular source type,
+with releted templates, in gwskysim simulator.
+
+How to add a new source type
+============================
+Follow these instructions step by step.
+
+Create your source file
+-----------------------
+Suppose you want to add a GW source named **Vulcano**. First of all create 
+this python file:
+
+.. code-block:: console
+
+ gwskysim/sources/gwvulcano.py
+ 
+Then create a class inside it with the following attributes:
+
+.. code-block:: python
+    :emphasize-lines: 1-5
+    
+    class GWVulcano(GWPointSource):
+
+        def __init__(self, name, ra, dec, polarization, inclination, distance, mass, rtime):
+        
+            GWPointSource.__init__(self, name, ra, dec, polarization, inclination)
+            self.distance = distance
+            self.mass = mass
+            self.rtime = rtime
+            
+Where *name*, *ra*, *dec*, *polarization* and *inclination* are mandatory
+arguments for all point-like source. *Distance*, *mass* and *rtime* are 
+proper parameters of the example source **Vulcano**, thus these are the
+parameters that uniquely classify your GW source.
+
+Add mandatory method
+-------------------- 
+Here comes the most important thing to do, **the source template script**.
+This must be contained in a *__call__* method of *GWVulcano* class and
+must return two numpy arrays containing the plus and the cross polarizations
+of the source, given a feneray numpy array *times_array*!
+
+.. code-block:: python
+    :emphasize-lines: 1-7
+               
+    def __call__(self, times_array):
+        """This is a __call__ that must return two numpy arrays 
+           containing the template (plus and cross polarization values
+           at each time) of the source.
+        """
+        # Write here your code, importing the template, and return
+        # it with h_p and h_c arrays
+        .
+        .
+        .  
+        return h_p, h_c 
+        
+Test source generation
+======================
+Now try to simulate your source, giving it plausible source parameters, 
+and use *generate_signal* method available for all **GWPointSource** sub-classes:  
+
+.. code-block:: python
+    :emphasize-lines: 13-23
+    
+    import pylab
+    from gwskysim.sources.gwvulcano import GWVulcano
+               
+    ra = 50 # in deg
+    dec = -125 # in deg
+    dist = 1.14 # in Mpc 
+    pol = 0 # in deg
+    incl = 0 # in deg
+    mass = 1.4 # in solas masses
+    rtime = 0. # reference timme in seconds
+
+    # Setup Vulcano source
+    v_source = GWVulcano('SpockPlanet', ra=ra, dec=dec, polarization=pol, 
+                         inclination=incl, distance=dist, mass=mass, rtime=rtime) 
+                                
+    # Configuration parameters used for the simulation 
+    t0 = 0 # start GPS time in s
+    duration = 100 # duration of the observation in s
+    fs = 8000 # sampling frequency in Hz
+    det = 'V1' # project on Virgo interferometer   
+    
+    # Make signal generation
+    h_v = v_source.generate_signal(t0, duration, fs, detectors = [det])[0] 
+    
+    # Plot and check it out
+    h_v.plot()
+    pylab.show() 
+    
+If you want to look at a real example, run *Example.py* located in gwskysim
+package.    
+    
+Generate GW population
+======================  
+
+This is an example that shows the script you have to write in order to 
+simulate GW strain data, given a list of HDF5 files containing sources
+and relative parameters. The data can be saved in HDF5 file, in the 
+commin format used in GW data analysis.
+  
+.. code-block:: python
+    :emphasize-lines: 7-8  
+    
+    import pylab
+    from gwskysim.sources.gwpopulation import GWPopulation
+     
+    src_pop = GWPopulation('path/to/the/1st/pars/file.hdf5',
+                           'path/to/the/2nd/pars/file.hdf5')
+    # 10 second of signal (time ref is 0) sampled at 4000 Hz
+    v_sign = src_pop.generate_waveforms(0, 10, 4000, detectors=['V1'], 
+             approximant='SEOBNRv4', lower_freq=20)
+
+    v_sign[0].plot()
+    # Save in hdf5
+    v_sign[0].save_to_hdf()
+    pylab.show()
+    
+The default file prefix is *output_gwskysim*. The simulated data are saved 
+in the same directory where the script is executed with the following format:
+
+*{prefix}_{detector_code}_{start_time}-{end_time}GPS.hdf5*.
+
+GWGlitch
+--------------
+There are different type of glitches, based on https://arxiv.org/abs/1803.09933. All these families are characterized by
+some common quantities  :
+
+* **name**
+* **t0**: the instant at which a glitch occurs;
+* **tau**: a characteristic time-scale for each glitch;
+* **SNR**: the desired signal to noise ratio of each glitch, given all the others parameters and a psd noise curve of a detector (for now only virgo is avaiable);
+
+Essentialy the SNR value is used to rescale the amplitude of each glitch
+(given all the others characterizing parameters).All types available are listed below,with a description of their characterizing parameters (in addition to the previous):
+ 
+* **gauss** : no others parameters
+* **line**: described as a lorentzian curves, no others parameters
+* **sine-gauss** : sinusoid of frequency f0 , modulated by a gaussian
+* **scatered-light-like**: frequency f0
+* **whistle-like**:frequency f0
+* **chirp-like**: chirp-like waveform characteristic of the inspiral of a compact binary of mass m1 and m2. Here t0 is the time to coalescence
+* **ringdown-like**: ringdown-like waveform monocromatic at f0 frequency, starting at t0.
+
+GWColoredNoise
+--------------
+
+Class that generates a time series of colored noise following a given PSD (for now only Virgo).
+It is based on the assumption (according to the sampling theorem) that the temporal lenght T of this time series is T=n * (1/ f), where:
+
+* **n** : number of sample of the time series (which is also equals to the number of sampling points of the given PSD)
+* **f** : Nyquist frequency, equals to 2*fmax, where fmax is the maximum frequency of the given PSD (for Virgo 8156 Hz)
+
+The parameters of gwcolored_noise class are:
+
+* **size**: number of samples of the time series. It can also be set  equals to None,in this case the lenght of time series output will be equals to the lenght of times_array initialized in gwsource
+* **asd** : amplitude spectral density, defined as sqrt(PSD). It has to be an interp1d object which will be interpolated by a frequency array, based on the following parameters:
+* **fmax** : maximum of the interpolating frequency
+* **fmin** : minimum of the interpolating frequency
+
+
+GWWhiteNoise
+--------------
+Class that generate a time series of white gaussian noise given a certain times_array

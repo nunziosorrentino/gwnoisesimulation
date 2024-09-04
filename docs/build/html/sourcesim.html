@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Source Simulation (BBH) &mdash; gwskysim 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Source Simulation" href="usecases.html" />
+    <link rel="prev" title="Simulating a population of BBH" href="popsim.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> gwskysim
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getstarted.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notes-to-developers.html">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html">Downloading data from GWOSC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raw_data.html#select-noise-according-to-quality">Select noise according to quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="popsim.html">Simulating a population of BBH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Source Simulation (BBH)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usecases.html">Source Simulation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gwskysim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Source Simulation (BBH)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sourcesim.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="source-simulation-bbh">
+<h1>Source Simulation (BBH)<a class="headerlink" href="#source-simulation-bbh" title="Permalink to this headline">¶</a></h1>
+<p>Now, from the sources parameters we can generate the waveforms.</p>
+<p>Enter the <code class="docutils literal notranslate"><span class="pre">/some/path/gwskysim/config</span></code> directory and open the
+“generate_waveforms_config.json” file. This JSON configuration file includes the
+following keys:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">data_directory</span></code></dt><dd><p>The directory in which sources parameters generated before are contained. Default is
+the directory “sources_parameters”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">output_directory_name</span></code></dt><dd><p>The name of the directory in which waveforms output files will be created. This
+directory will be inside the population directory at the same level as
+“sources_parameters” directory.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">parallel_processes</span></code></dt><dd><p>Number of parallel processed that will be used in the simulation. This speeds up
+the simulation.
+The number of processes should be less than the number of cores on your computer.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">approximant</span></code></dt><dd><p>The model that will be used to generate the waveforms. Default is “SEOBNRv4”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">sample_freq</span></code></dt><dd><p>The sampling frequency (measured in Hz) of the waveforms. Default is “4096”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">lower_freq</span></code></dt><dd><p>The starting frequency (in Hz) of each waveform. Default is “16”.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">detectors</span></code></dt><dd><p>The network of the detector in which you want to simulate the waveforms.
+Default is “[H1,L1,V1]” (Hanford, Livingston, Virgo).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">reference_GPS_time</span></code></dt><dd><p>The GPS time at which the signals arrive at geocenter. Default is “1238112018.0”
+that is the starting time of O3.</p>
+</dd>
+</dl>
+<p>Once you’ve adjusted the JSON configuration file, go inside the population directory
+<code class="docutils literal notranslate"><span class="pre">/some/path/population_directory</span></code> (same level as “sources_parameters”) and run
+the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>generate_waveforms.py ../gwskysim/config/generate_waveforms_config.json
+</pre></div>
+</div>
+<p>At the end of the script you will see the message:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">All waveforms have been generated and saved to disk</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This could take many hours to complete!</p>
+</div>
+<p>The script will create a directory called “waveforms”. The output <cite>*.hdf5</cite> files
+will be contained in sub-directories, one for each detector used in the simulation.
+By default you will find three directories: “H1”, “L1”, “V1”.
+For a given source, you will have three waveforms, one for each detector, projected
+in the detector antenna pattern. The time delay due to distance between
+detectors is taken into account.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usecases.html" class="btn btn-neutral float-right" title="Source Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="popsim.html" class="btn btn-neutral float-left" title="Simulating a population of BBH" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019, Massimiliano Razzano (massimiliano.razzano@unipi.it)
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
